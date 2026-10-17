@@ -21,7 +21,7 @@ E = html.escape
 
 def page(lead=None):
     quote = lead["quote"] if lead else T["duty_quote"]
-    who = (f'{E(lead["employer"])}&rsquo;s job posting, {E(lead["posted_label"])}' if lead
+    who = (E(lead["who"]) if lead
            else f'{T["employer_count"]} Twin Cities employers posted this step in the last 30 days')
     boot = {"product": T["product"], "token": lead["token"] if lead else "", "free_items": T["free_items"],
             "item_word": T["item_word"], "example_output": T["example_output"], "price": T["price_usd"]}
