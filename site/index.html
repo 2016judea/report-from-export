@@ -1,0 +1,569 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Report From Export</title>
+<meta name="description" content="Paste the CSV your system already exports and ask what you want to know. Get the owner&#x27;s report: every number computed from every row, none made up.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232b4a8b'/></svg>">
+<!-- bm-posthog:begin v2 — shared across every Vercel prototype; source ~/.claude/skills/site-analytics/posthog_snippet.html. ?me=1 opts this browser out on this site (?me=0 undoes); ?me=1&next=host1,host2 walks the opt-out across sites; headless (navigator.webdriver) never loads it. -->
+<script>
+(function(w,d){var S="report-from-export",K="bm_me",me=false,u,p,n;
+try{u=new URLSearchParams(location.search);p=u.get("me");n=u.get("next");}catch(e){}
+try{if(p==="1"){localStorage.setItem(K,"1");}else if(p==="0"){localStorage.removeItem(K);}}catch(e){}
+if(p==="1"){d.cookie=K+"=1; path=/; max-age=63072000; SameSite=Lax";}else if(p==="0"){d.cookie=K+"=; path=/; max-age=0; SameSite=Lax";}
+try{me=localStorage.getItem(K)==="1";}catch(e){}
+if(!me&&/(?:^|; )bm_me=1/.test(d.cookie))me=true;
+if(p==="1"&&n){var h=n.split(","),f=h.shift();if(/^[a-z0-9.-]+$/.test(f)&&(f.slice(-11)===".vercel.app"||f==="brickandmortar.dev"||f==="readglean.com")){location.replace("https://"+f+"/?me=1"+(h.length?"&next="+h.join(","):""));}}
+if(navigator.webdriver===true)return;
+!function(t,e){var o,n,p,r;e.__SV||(w.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify setPersonProperties reset get_distinct_id get_session_id alias set_config startSessionRecording stopSessionRecording opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing captureException getFeatureFlag isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(d,w.posthog||[]);
+posthog.init("phc_yFgRGppL6H7DvhgZTQKbHdrY5oqnpLT482rrNYtLqnAx",{api_host:"https://us.i.posthog.com",person_profiles:"identified_only",persistence:"localStorage+cookie",opt_out_capturing_by_default:me});
+if(me){posthog.opt_out_capturing();}else{if(p==="0")posthog.opt_in_capturing();posthog.register({site:S});}
+})(window,document);
+</script>
+<!-- bm-posthog:end -->
+
+<style>
+:root{--bg:#f7f5f0;--ink:#16140f;--muted:#6b665c;--rule:#ddd7cb;--card:#fff;--accent:#2b4a8b;--onaccent:#fff;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;--serif:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14130f;--ink:#efece4;--muted:#a39d90;--rule:#36332c;--card:#1d1c17}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans)}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 16px 64px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{font:400 clamp(28px,5.4vw,52px)/1.08 var(--serif);margin:10px 0 8px;letter-spacing:-.01em;max-width:22ch}
+h1 q{quotes:"\201C" "\201D"}
+.src{font-size:14px;color:var(--muted);margin:0 0 18px}
+.turn{font-size:clamp(18px,2.4vw,22px);margin:0 0 22px;max-width:46ch}
+.turn b{color:var(--accent)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:900px){.grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+.pane{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px;min-width:0}
+.pane h2{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+textarea{width:100%;min-height:300px;font:14px/1.45 var(--mono);color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:8px;padding:10px;resize:vertical}
+@media (max-width:899px){textarea{min-height:200px}.grid>.pane:nth-child(2){order:-1}#out{max-height:62vh;overflow:auto}.turn{font-size:17px;margin-bottom:14px}.src{margin-bottom:10px}}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+button,.btn{font:600 16px var(--sans);border:0;border-radius:9px;padding:12px 18px;cursor:pointer;background:var(--accent);color:var(--onaccent);min-height:44px;text-decoration:none;display:inline-flex;align-items:center}
+button.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+button:disabled{opacity:.55;cursor:wait}
+.hint{font-size:13px;color:var(--muted)}
+#out{min-height:120px}
+.err{color:#b3261e;font-size:14px}
+.lock{border:1px dashed var(--accent);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:15px}
+.pay{margin-top:40px;border-top:1px solid var(--rule);padding-top:26px;max-width:640px}
+.pay h3{font:400 26px/1.2 var(--serif);margin:0 0 6px}
+.pay ul{margin:8px 0 14px;padding-left:20px}
+.pw{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.pw input{font:16px var(--mono);padding:10px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);min-height:44px;flex:1;min-width:0}
+#checkout{margin-top:14px}
+.custom{margin-top:34px;font-size:15px;color:var(--muted);max-width:640px}
+.custom a{color:var(--ink)}
+.foot{margin-top:40px;border-top:1px solid var(--rule);padding-top:12px;font-size:13px;color:var(--muted);max-width:72ch}
+.foot a{color:var(--muted)}
+.unl{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--onaccent);border-radius:4px;padding:3px 7px}
+.q{font-size:14px;color:var(--muted);margin:0 0 4px}.head{font:400 22px/1.25 var(--serif);margin:0 0 10px}.finds{padding-left:20px;margin:0 0 10px}.finds li{margin:0 0 8px}details{font-size:14px}summary{cursor:pointer;color:var(--muted);min-height:40px;display:flex;align-items:center}.mt{margin:10px 0 14px}.mt table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}.mt td{padding:3px 4px;border-bottom:1px solid var(--rule)}.mt td:first-child{width:42%;word-break:break-word}.bar i{display:block;height:8px;background:var(--accent);border-radius:2px;opacity:.75}.r{text-align:right;white-space:nowrap}textarea#inp{white-space:pre;overflow-x:auto}@media (max-width:600px){.head{font-size:18px}}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script><script defer src="/_vercel/insights/script.js"></script>
+</head><body><main class="wrap">
+<div class="eyebrow">25 Twin Cities employers posted this step in the last 30 days</div>
+<h1><q>Prepare financial and management reports for the owner</q></h1>
+<p class="src">From a Twin Cities job posting, October 2026.</p>
+<p class="turn">That line describes a step, not a person. <b>Here is the step, done</b> on a service company's work-order export: the owner's question in, the report out, with every number computed from the rows and none written by hand.</p>
+<div class="grid">
+ <section class="pane"><h2><span>The export (example, edit or paste yours)</span><span id="inState" class="hint">example</span></h2>
+  <textarea id="inp" spellcheck="false" aria-label="The export (example, edit or paste yours)">QUESTION: How did September go, and what should I look at before October closes?
+date,work_order,tech,job_type,area,labor_hours,parts_cost,invoice_total,status
+2026-08-01,WO-5167,Priya,Furnace repair,Uptown,2.3,134.5,469.08,paid
+2026-08-01,WO-5346,Jen,AC repair,Richfield,1.6,200.78,471.05,paid
+2026-08-01,WO-5434,Jen,Furnace repair,Edina,3.4,111.46,575.47,paid
+2026-08-01,WO-5448,Priya,Furnace tune-up,Edina,1.3,34.24,189,paid
+2026-08-02,WO-5109,Tomas,Furnace tune-up,Longfellow,1.6,37.09,189,paid
+2026-08-02,WO-5139,Dale,Furnace tune-up,Richfield,0.7,30.18,189,paid
+2026-08-02,WO-5190,Jen,Water heater install,Edina,4.1,852.97,1664.01,paid
+2026-08-02,WO-5302,Dale,Furnace repair,Longfellow,2.0,159.83,465.77,unpaid
+2026-08-02,WO-5343,Tomas,AC repair,St. Louis Park,1.1,149.23,338.96,paid
+2026-08-03,WO-5209,Tomas,Thermostat install,Nokomis,1.1,108.54,284.03,paid
+2026-08-03,WO-5259,Priya,Furnace repair,Roseville,1.9,141.78,428.9,paid
+2026-08-03,WO-5426,Marcus,Furnace repair,St. Louis Park,2.4,174.83,536.02,paid
+2026-08-04,WO-5281,Dale,Duct cleaning,Northeast,3.3,30.24,453.32,paid
+2026-08-04,WO-5449,Dale,Water heater install,Uptown,4.4,1101.85,2037.5,paid
+2026-08-05,WO-5172,Marcus,Furnace repair,Northeast,2.9,265.16,720.47,paid
+2026-08-05,WO-5225,Dale,AC repair,Roseville,2.4,74.97,401.21,paid
+2026-08-05,WO-5240,Priya,Furnace repair,Uptown,2.1,193.82,524.16,paid
+2026-08-05,WO-5270,Priya,AC repair,St. Louis Park,2.5,134.9,494.62,paid
+2026-08-05,WO-5291,Tomas,Thermostat install,St. Louis Park,0.9,176.65,350.98,paid
+2026-08-05,WO-5362,Tomas,Water heater install,Uptown,4.3,463.61,1163.37,paid
+2026-08-05,WO-5379,Dale,Thermostat install,St. Louis Park,0.7,159.45,302.76,paid
+2026-08-05,WO-5394,Marcus,Furnace repair,Edina,3.0,255.44,719.84,paid
+2026-08-05,WO-5411,Jen,Furnace tune-up,Richfield,1.7,34.61,189,paid
+2026-08-05,WO-5501,Jen,Furnace repair,Nokomis,3.0,127.97,547.76,paid
+2026-08-06,WO-5313,Marcus,Furnace tune-up,Uptown,1.5,46.74,189,paid
+2026-08-06,WO-5348,Tomas,Furnace repair,Roseville,2.0,145.3,446.16,paid
+2026-08-06,WO-5387,Marcus,Duct cleaning,Edina,2.9,20.73,390.49,paid
+2026-08-06,WO-5451,Priya,Furnace repair,Northeast,3.0,153.98,582.87,paid
+2026-08-06,WO-5464,Dale,AC repair,Longfellow,1.4,151.24,303.34,paid
+2026-08-06,WO-5503,Tomas,Water heater install,Edina,3.4,1384.13,2293.58,paid
+2026-08-07,WO-5115,Priya,Water heater install,Roseville,2.6,639.8,1188.73,paid
+2026-08-07,WO-5207,Jen,Furnace repair,Roseville,3.3,167.42,638.52,paid
+2026-08-07,WO-5215,Jen,Furnace repair,Northeast,3.7,191.82,721.46,unpaid
+2026-08-07,WO-5227,Dale,Furnace tune-up,Nokomis,0.8,33.16,189,paid
+2026-08-07,WO-5340,Jen,Duct cleaning,Longfellow,4.2,18.28,549.68,paid
+2026-08-07,WO-5454,Tomas,Furnace repair,Longfellow,1.8,155.24,434.57,paid
+2026-08-07,WO-5489,Jen,AC repair,St. Louis Park,3.2,213.43,688.13,paid
+2026-08-08,WO-5287,Tomas,Duct cleaning,Northeast,3.4,17.75,448.96,paid
+2026-08-08,WO-5500,Priya,Thermostat install,St. Louis Park,1.2,103.24,289.37,paid
+2026-08-09,WO-5132,Jen,AC repair,Edina,2.8,144.17,544.63,paid
+2026-08-09,WO-5175,Tomas,AC repair,Northeast,2.1,73.08,361.16,paid
+2026-08-09,WO-5246,Marcus,Furnace repair,Nokomis,3.0,208.07,655.89,paid
+2026-08-09,WO-5265,Marcus,Furnace tune-up,Roseville,1.5,30.38,189,paid
+2026-08-09,WO-5440,Dale,Furnace tune-up,Longfellow,1.1,36.6,189,paid
+2026-08-10,WO-5279,Jen,AC repair,St. Louis Park,2.5,218.67,607.7,paid
+2026-08-10,WO-5425,Dale,Furnace repair,Richfield,2.3,210.4,571.54,unpaid
+2026-08-10,WO-5429,Dale,Furnace repair,Edina,3.8,190.73,732.49,paid
+2026-08-10,WO-5511,Marcus,Furnace repair,Roseville,2.8,196.03,614.64,paid
+2026-08-11,WO-5130,Dale,Furnace repair,Northeast,2.9,123.47,529.18,unpaid
+2026-08-11,WO-5201,Priya,Furnace tune-up,Roseville,1.6,26.36,189,paid
+2026-08-11,WO-5375,Jen,Furnace repair,Roseville,3.3,189.22,667.95,paid
+2026-08-11,WO-5385,Priya,Water heater install,St. Louis Park,4.4,554.07,1297.99,paid
+2026-08-12,WO-5191,Dale,AC repair,Uptown,1.5,183.69,435.48,unpaid
+2026-08-12,WO-5236,Priya,Furnace repair,Roseville,2.4,307.27,714.81,paid
+2026-08-12,WO-5268,Dale,AC repair,Northeast,1.5,83.61,300.37,paid
+2026-08-12,WO-5323,Tomas,Duct cleaning,Northeast,2.8,21.35,378.82,paid
+2026-08-12,WO-5431,Priya,Thermostat install,Nokomis,0.8,119.62,261.49,paid
+2026-08-12,WO-5437,Dale,AC repair,Northeast,2.1,199.55,531.89,unpaid
+2026-08-13,WO-5153,Jen,Furnace repair,Edina,2.5,252.36,653.19,paid
+2026-08-13,WO-5161,Dale,Duct cleaning,Longfellow,1.6,21.3,228.75,paid
+2026-08-13,WO-5180,Dale,Furnace tune-up,Edina,1.1,39.75,189,paid
+2026-08-13,WO-5197,Tomas,AC repair,Roseville,1.1,163.74,358.55,paid
+2026-08-13,WO-5332,Marcus,Water heater install,Uptown,4.0,870.35,1674.97,paid
+2026-08-13,WO-5418,Priya,Furnace tune-up,Edina,0.9,24.78,189,paid
+2026-08-13,WO-5470,Tomas,Furnace repair,Longfellow,2.6,249.04,661.2,paid
+2026-08-13,WO-5515,Tomas,AC repair,Longfellow,1.8,214.05,513.97,unpaid
+2026-08-14,WO-5263,Priya,Furnace tune-up,Richfield,1.3,33.92,189,unpaid
+2026-08-14,WO-5293,Jen,AC repair,Nokomis,1.8,203.39,499.58,paid
+2026-08-14,WO-5299,Tomas,AC repair,Roseville,1.4,182.53,421.42,unpaid
+2026-08-14,WO-5414,Dale,Duct cleaning,Richfield,1.6,5.34,207.21,paid
+2026-08-14,WO-5443,Tomas,AC repair,Richfield,1.3,122.39,327.73,paid
+2026-08-14,WO-5496,Priya,Furnace repair,Longfellow,2.3,179.48,529.8,paid
+2026-08-15,WO-5101,Jen,Thermostat install,Edina,0.8,186.28,351.48,paid
+2026-08-15,WO-5166,Jen,Furnace tune-up,Longfellow,1.2,36.72,189,paid
+2026-08-15,WO-5308,Jen,AC repair,Northeast,2.5,132.44,491.29,unpaid
+2026-08-15,WO-5319,Marcus,AC repair,Longfellow,1.9,177.33,476.9,unpaid
+2026-08-15,WO-5367,Marcus,AC repair,Edina,1.8,148.96,426.1,paid
+2026-08-15,WO-5447,Priya,Duct cleaning,Richfield,2.8,22.34,380.16,paid
+2026-08-15,WO-5514,Tomas,Furnace repair,Uptown,1.6,139.34,388.11,paid
+2026-08-16,WO-5366,Jen,AC repair,Northeast,2.1,84.61,376.72,paid
+2026-08-16,WO-5376,Priya,Water heater install,Uptown,5.5,784.85,1747.05,paid
+2026-08-16,WO-5400,Jen,Thermostat install,Longfellow,1.0,34.02,170.93,paid
+2026-08-16,WO-5453,Tomas,Furnace tune-up,Edina,1.3,37.79,189,unpaid
+2026-08-16,WO-5456,Dale,Furnace repair,Longfellow,1.9,241.26,563.2,paid
+2026-08-17,WO-5304,Jen,AC repair,Nokomis,3.0,156.34,586.06,paid
+2026-08-17,WO-5408,Marcus,Thermostat install,Longfellow,1.1,203.63,412.4,paid
+2026-08-18,WO-5250,Dale,AC repair,Uptown,2.3,164.86,510.06,paid
+2026-08-18,WO-5269,Jen,Thermostat install,Longfellow,1.4,174.75,410.91,paid
+2026-08-18,WO-5331,Dale,AC repair,Uptown,2.8,198.28,494.14,unpaid
+2026-08-18,WO-5413,Priya,Furnace repair,Northeast,3.6,186.46,701.72,paid
+2026-08-19,WO-5104,Priya,Water heater install,Edina,5.1,340.68,1097.42,paid
+2026-08-19,WO-5152,Dale,AC repair,Nokomis,1.8,146.1,422.24,paid
+2026-08-19,WO-5168,Dale,Water heater install,Roseville,4.2,787.26,1270.24,paid
+2026-08-19,WO-5285,Marcus,AC repair,Northeast,2.5,136.06,496.18,paid
+2026-08-19,WO-5294,Tomas,Furnace repair,Edina,3.3,213.43,700.63,paid
+2026-08-19,WO-5517,Priya,AC repair,Uptown,0.8,118.97,260.61,paid
+2026-08-20,WO-5136,Tomas,Thermostat install,Northeast,0.7,218.25,382.14,unpaid
+2026-08-20,WO-5300,Marcus,Furnace repair,Roseville,2.1,115.28,418.13,paid
+2026-08-20,WO-5357,Dale,Thermostat install,Longfellow,0.6,218.06,295.5,paid
+2026-08-20,WO-5391,Tomas,Thermostat install,Edina,0.5,159.57,277.92,paid
+2026-08-21,WO-5173,Dale,Duct cleaning,St. Louis Park,3.4,18.89,450.5,unpaid
+2026-08-21,WO-5181,Dale,AC repair,St. Louis Park,0.5,177.11,301.6,paid
+2026-08-21,WO-5309,Jen,Water heater install,Uptown,6.2,451.48,1384.5,unpaid
+2026-08-21,WO-5488,Jen,Thermostat install,Nokomis,0.7,130.53,263.72,paid
+2026-08-22,WO-5131,Tomas,AC repair,Roseville,0.9,164.18,334.14,paid
+2026-08-22,WO-5195,Jen,Furnace tune-up,Richfield,1.4,42.31,189,paid
+2026-08-22,WO-5203,Priya,Furnace repair,Longfellow,2.3,142.71,480.16,paid
+2026-08-22,WO-5221,Dale,Water heater install,Northeast,2.9,705.5,1051.94,paid
+2026-08-22,WO-5457,Dale,Furnace repair,Nokomis,2.7,219.27,633.51,paid
+2026-08-22,WO-5504,Dale,Furnace repair,Uptown,1.4,243.79,504.12,paid
+2026-08-23,WO-5289,Marcus,Furnace repair,Uptown,2.7,92.73,462.69,paid
+2026-08-23,WO-5303,Marcus,Furnace tune-up,Nokomis,1.6,55.69,189,paid
+2026-08-23,WO-5322,Marcus,AC repair,Roseville,1.3,147.64,361.81,paid
+2026-08-23,WO-5397,Marcus,Thermostat install,Roseville,1.2,118.29,309.69,paid
+2026-08-23,WO-5476,Tomas,AC repair,St. Louis Park,2.5,184.53,561.62,paid
+2026-08-23,WO-5478,Dale,Furnace repair,St. Louis Park,1.5,253.66,423.95,paid
+2026-08-23,WO-5510,Marcus,Furnace repair,Uptown,2.6,197.91,592.18,paid
+2026-08-24,WO-5199,Dale,Water heater install,Richfield,2.4,749.15,1311.35,paid
+2026-08-24,WO-5325,Jen,Thermostat install,Richfield,0.7,114.52,242.1,paid
+2026-08-24,WO-5349,Dale,Furnace repair,St. Louis Park,2.8,105.62,492.59,paid
+2026-08-24,WO-5350,Marcus,Duct cleaning,Uptown,3.4,16.4,447.14,paid
+2026-08-24,WO-5460,Marcus,AC repair,Richfield,2.1,194.2,524.67,paid
+2026-08-25,WO-5117,Dale,Thermostat install,Edina,1.2,152.31,355.62,paid
+2026-08-25,WO-5204,Tomas,Furnace repair,Edina,1.7,83.3,324.95,paid
+2026-08-25,WO-5243,Dale,Furnace tune-up,Uptown,0.9,50.33,151.2,paid
+2026-08-25,WO-5380,Dale,Thermostat install,Northeast,1.1,76.86,241.26,paid
+2026-08-26,WO-5110,Marcus,Furnace repair,Northeast,2.5,94.41,439.95,paid
+2026-08-26,WO-5141,Priya,Furnace repair,Northeast,3.5,214.33,726.85,paid
+2026-08-26,WO-5162,Jen,Thermostat install,Edina,1.2,140.49,339.66,paid
+2026-08-26,WO-5238,Priya,Furnace repair,Northeast,2.8,166.94,575.37,paid
+2026-08-26,WO-5307,Marcus,AC repair,Northeast,1.4,129.04,349.2,paid
+2026-08-26,WO-5458,Priya,AC repair,Longfellow,2.7,169.82,566.76,paid
+2026-08-26,WO-5465,Marcus,Furnace repair,Richfield,1.6,172.0,432.2,paid
+2026-08-27,WO-5233,Marcus,Furnace repair,St. Louis Park,3.1,174.13,622.58,unpaid
+2026-08-27,WO-5347,Marcus,Duct cleaning,Longfellow,2.8,28.4,388.34,paid
+2026-08-27,WO-5356,Jen,Duct cleaning,Roseville,4.5,15.84,583.88,unpaid
+2026-08-27,WO-5407,Jen,AC repair,St. Louis Park,1.9,121.77,401.89,paid
+2026-08-27,WO-5415,Jen,Furnace repair,St. Louis Park,3.1,64.51,474.59,paid
+2026-08-27,WO-5424,Jen,Furnace repair,Northeast,3.6,177.19,689.21,unpaid
+2026-08-27,WO-5479,Priya,Furnace repair,Edina,2.2,94.2,402.17,paid
+2026-08-28,WO-5112,Dale,Furnace tune-up,Northeast,0.7,55.74,189,paid
+2026-08-28,WO-5149,Marcus,Duct cleaning,St. Louis Park,3.7,21.56,491.61,paid
+2026-08-28,WO-5178,Dale,Furnace repair,Longfellow,0.8,229.03,409.19,paid
+2026-08-28,WO-5182,Priya,AC repair,Uptown,2.7,166.57,562.37,paid
+2026-08-28,WO-5200,Jen,Furnace repair,Richfield,1.8,287.09,612.57,paid
+2026-08-28,WO-5370,Priya,Duct cleaning,Richfield,2.6,25.89,359.95,unpaid
+2026-08-28,WO-5436,Priya,Furnace repair,Uptown,2.2,178.65,516.18,paid
+2026-08-29,WO-5160,Jen,Thermostat install,Uptown,1.0,100.35,260.47,paid
+2026-08-29,WO-5254,Tomas,Furnace repair,Edina,2.5,189.28,568.03,paid
+2026-08-29,WO-5314,Jen,AC repair,Richfield,2.5,100.62,448.34,paid
+2026-08-29,WO-5339,Marcus,Furnace repair,Nokomis,3.7,207.06,742.03,paid
+2026-08-29,WO-5422,Marcus,Furnace repair,Nokomis,2.5,182.75,559.21,paid
+2026-08-30,WO-5231,Tomas,Furnace repair,Nokomis,2.6,213.83,613.67,unpaid
+2026-08-30,WO-5237,Dale,Furnace repair,Edina,2.6,126.16,495.32,paid
+2026-08-30,WO-5315,Priya,Furnace repair,St. Louis Park,1.6,195.26,463.6,paid
+2026-08-30,WO-5316,Jen,Furnace tune-up,St. Louis Park,1.3,31.15,189,paid
+2026-08-31,WO-5290,Tomas,Thermostat install,Edina,1.1,151.84,342.48,paid
+2026-08-31,WO-5312,Jen,Furnace tune-up,Nokomis,1.6,19.75,189,unpaid
+2026-08-31,WO-5334,Marcus,Furnace repair,Richfield,2.8,194.7,612.85,paid
+2026-08-31,WO-5353,Marcus,Water heater install,St. Louis Park,3.6,587.93,1243.71,paid
+2026-08-31,WO-5381,Tomas,AC repair,Northeast,1.5,246.97,520.91,paid
+2026-09-01,WO-5135,Tomas,Furnace tune-up,Edina,1.3,39.23,189,paid
+2026-09-01,WO-5272,Marcus,Furnace repair,Uptown,3.3,285.51,797.94,paid
+2026-09-01,WO-5327,Tomas,Thermostat install,Roseville,0.9,120.16,274.72,paid
+2026-09-01,WO-5336,Priya,Furnace tune-up,Longfellow,1.0,35.34,189,paid
+2026-09-01,WO-5363,Priya,Furnace tune-up,Uptown,0.9,32.71,189,paid
+2026-09-01,WO-5421,Dale,Water heater install,Uptown,2.4,1039.96,1363.16,paid
+2026-09-01,WO-5433,Jen,Water heater install,Uptown,4.3,911.35,1767.82,paid
+2026-09-01,WO-5477,Priya,Furnace tune-up,Nokomis,1.0,38.98,189,paid
+2026-09-02,WO-5146,Marcus,Furnace tune-up,Richfield,1.2,38.38,189,unpaid
+2026-09-02,WO-5210,Priya,Furnace tune-up,Northeast,1.4,26.36,189,paid
+2026-09-02,WO-5324,Dale,Thermostat install,Northeast,1.1,125.05,306.32,paid
+2026-09-02,WO-5351,Marcus,Furnace tune-up,St. Louis Park,1.1,21.01,189,paid
+2026-09-02,WO-5389,Dale,Furnace repair,Northeast,1.5,180.11,430.65,paid
+2026-09-02,WO-5518,Marcus,Furnace repair,Longfellow,2.3,229.42,597.22,paid
+2026-09-03,WO-5185,Priya,Thermostat install,Roseville,1.1,134.59,319.2,paid
+2026-09-03,WO-5187,Tomas,Furnace repair,Nokomis,2.2,166.97,500.41,paid
+2026-09-03,WO-5189,Dale,Furnace tune-up,Edina,0.8,58.74,189,paid
+2026-09-03,WO-5224,Tomas,Furnace repair,Nokomis,1.5,161.63,405.7,paid
+2026-09-03,WO-5248,Marcus,Furnace repair,Richfield,2.2,140.33,464.45,unpaid
+2026-09-03,WO-5384,Dale,Furnace tune-up,Uptown,1.6,29.14,151.2,paid
+2026-09-04,WO-5280,Priya,Thermostat install,Roseville,0.8,242.0,426.7,paid
+2026-09-04,WO-5295,Jen,Furnace tune-up,Uptown,1.4,33.95,189,paid
+2026-09-04,WO-5345,Marcus,Furnace tune-up,Uptown,1.0,23.96,189,paid
+2026-09-04,WO-5377,Marcus,Furnace tune-up,Roseville,1.3,31.66,189,paid
+2026-09-04,WO-5509,Tomas,Furnace tune-up,Northeast,1.6,32.66,189,paid
+2026-09-05,WO-5107,Dale,Furnace tune-up,Richfield,1.1,23.59,189,paid
+2026-09-05,WO-5273,Jen,Furnace repair,Uptown,2.5,146.12,509.76,paid
+2026-09-05,WO-5352,Marcus,AC repair,St. Louis Park,1.6,160.09,416.12,paid
+2026-09-06,WO-5127,Marcus,Furnace tune-up,St. Louis Park,1.0,46.27,189,paid
+2026-09-06,WO-5128,Tomas,Furnace repair,Uptown,2.3,261.62,640.69,paid
+2026-09-06,WO-5176,Tomas,Furnace tune-up,Edina,1.2,29.6,189,paid
+2026-09-06,WO-5328,Tomas,Furnace repair,Edina,3.3,236.81,732.19,unpaid
+2026-09-07,WO-5262,Dale,Furnace tune-up,Longfellow,0.7,37.87,151.2,paid
+2026-09-07,WO-5441,Jen,Duct cleaning,Richfield,3.3,11.31,427.77,paid
+2026-09-07,WO-5455,Jen,Furnace tune-up,Nokomis,1.0,28.05,189,unpaid
+2026-09-07,WO-5472,Dale,AC repair,Uptown,1.8,186.91,477.33,paid
+2026-09-08,WO-5119,Priya,Furnace repair,Uptown,2.0,144.49,445.06,paid
+2026-09-08,WO-5140,Jen,Furnace repair,Edina,2.9,142.63,555.05,paid
+2026-09-08,WO-5156,Marcus,Furnace repair,Nokomis,2.4,108.78,446.85,paid
+2026-09-08,WO-5242,Priya,Water heater install,Edina,4.6,704.73,1526.39,paid
+2026-09-08,WO-5306,Jen,Furnace tune-up,Roseville,1.3,31.11,189,paid
+2026-09-08,WO-5329,Tomas,Furnace tune-up,Uptown,1.0,15.57,189,paid
+2026-09-08,WO-5338,Tomas,Furnace tune-up,Northeast,1.1,34.14,189,paid
+2026-09-08,WO-5344,Dale,Furnace repair,Nokomis,0.9,236.07,431.19,paid
+2026-09-08,WO-5361,Tomas,Furnace repair,Northeast,3.2,149.8,602.23,paid
+2026-09-08,WO-5423,Tomas,Furnace repair,Roseville,2.2,208.22,556.1,paid
+2026-09-09,WO-5170,Dale,Furnace tune-up,Longfellow,0.9,27.01,189,paid
+2026-09-09,WO-5230,Priya,Thermostat install,Uptown,0.9,117.27,270.81,paid
+2026-09-09,WO-5239,Tomas,Furnace repair,St. Louis Park,3.2,104.47,541.03,paid
+2026-09-09,WO-5274,Dale,Duct cleaning,Roseville,1.9,30.4,278.54,paid
+2026-09-10,WO-5177,Dale,Furnace repair,Roseville,0.9,205.98,390.57,paid
+2026-09-10,WO-5208,Marcus,AC repair,Richfield,2.2,280.99,654.34,paid
+2026-09-10,WO-5229,Tomas,Furnace tune-up,Longfellow,1.4,23.44,189,paid
+2026-09-10,WO-5235,Tomas,Thermostat install,Longfellow,0.9,200.42,383.07,paid
+2026-09-10,WO-5249,Marcus,Thermostat install,Longfellow,1.1,107.71,282.91,unpaid
+2026-09-10,WO-5369,Marcus,Furnace tune-up,Richfield,1.1,46.15,189,paid
+2026-09-10,WO-5507,Marcus,Furnace repair,St. Louis Park,3.5,164.57,659.67,paid
+2026-09-11,WO-5144,Jen,Thermostat install,Roseville,1.3,101.87,300.02,paid
+2026-09-11,WO-5157,Jen,AC repair,Richfield,3.3,60.66,494.39,paid
+2026-09-11,WO-5214,Dale,Furnace tune-up,Uptown,1.3,42.06,189,paid
+2026-09-11,WO-5373,Dale,Furnace repair,Nokomis,1.9,127.07,327.23,paid
+2026-09-11,WO-5502,Priya,Furnace tune-up,Edina,1.4,43.07,189,paid
+2026-09-12,WO-5103,Marcus,Furnace repair,St. Louis Park,2.4,200.79,571.07,unpaid
+2026-09-12,WO-5122,Tomas,Furnace tune-up,Nokomis,1.4,44.04,189,paid
+2026-09-12,WO-5202,Dale,Furnace repair,Richfield,1.9,140.95,342.22,unpaid
+2026-09-12,WO-5251,Dale,Furnace repair,St. Louis Park,2.6,164.03,546.44,unpaid
+2026-09-12,WO-5355,Dale,Furnace tune-up,Edina,1.3,26.69,189,unpaid
+2026-09-12,WO-5406,Jen,Duct cleaning,Edina,3.3,11.23,427.66,paid
+2026-09-12,WO-5412,Tomas,Water heater install,Uptown,2.1,1004.73,1618.89,paid
+2026-09-13,WO-5184,Tomas,Furnace repair,St. Louis Park,2.7,170.53,567.72,paid
+2026-09-13,WO-5186,Marcus,Furnace tune-up,Edina,1.0,35.54,189,paid
+2026-09-13,WO-5232,Jen,Furnace tune-up,Uptown,1.2,42.38,189,paid
+2026-09-13,WO-5383,Marcus,Furnace tune-up,Roseville,1.2,35.4,189,paid
+2026-09-13,WO-5404,Dale,Thermostat install,Longfellow,0.7,91.57,168.9,paid
+2026-09-13,WO-5410,Marcus,Thermostat install,Edina,1.4,160.83,392.12,paid
+2026-09-13,WO-5417,Priya,Furnace tune-up,Uptown,1.5,36.77,189,paid
+2026-09-13,WO-5485,Dale,Water heater install,Roseville,1.4,1080.06,1633.08,paid
+2026-09-14,WO-5108,Tomas,Furnace tune-up,Edina,1.4,42.66,189,paid
+2026-09-14,WO-5475,Tomas,Thermostat install,Uptown,1.1,209.4,420.19,paid
+2026-09-14,WO-5491,Marcus,Furnace tune-up,St. Louis Park,1.1,24.29,189,paid
+2026-09-14,WO-5505,Jen,Thermostat install,Edina,1.0,151.72,329.82,paid
+2026-09-15,WO-5165,Tomas,Furnace repair,St. Louis Park,1.3,121.23,326.16,paid
+2026-09-15,WO-5213,Marcus,Furnace tune-up,Longfellow,1.5,36.96,189,paid
+2026-09-15,WO-5439,Jen,Thermostat install,Richfield,1.3,175.15,398.95,paid
+2026-09-16,WO-5150,Marcus,Thermostat install,Northeast,0.6,95.65,204.13,paid
+2026-09-16,WO-5169,Priya,Furnace tune-up,Uptown,1.1,36.23,189,paid
+2026-09-16,WO-5305,Tomas,Furnace tune-up,Longfellow,0.9,25.67,189,paid
+2026-09-16,WO-5392,Priya,Furnace tune-up,Northeast,1.2,50.17,189,paid
+2026-09-16,WO-5427,Marcus,AC repair,St. Louis Park,0.9,177.44,352.04,paid
+2026-09-16,WO-5452,Dale,Water heater install,Uptown,2.1,897.04,1473.5,paid
+2026-09-16,WO-5486,Dale,Furnace tune-up,Northeast,1.2,36.37,189,paid
+2026-09-16,WO-5495,Marcus,Furnace tune-up,St. Louis Park,1.3,43.83,189,paid
+2026-09-17,WO-5134,Marcus,Furnace tune-up,Roseville,1.1,38.61,189,paid
+2026-09-17,WO-5223,Marcus,Furnace tune-up,Longfellow,1.1,48.8,189,unpaid
+2026-09-17,WO-5288,Priya,Furnace repair,Uptown,3.3,54.31,485.82,unpaid
+2026-09-17,WO-5330,Tomas,Furnace tune-up,Northeast,1.6,37.47,189,unpaid
+2026-09-17,WO-5342,Tomas,Furnace tune-up,Roseville,0.9,41.22,189,paid
+2026-09-17,WO-5446,Dale,Furnace repair,Nokomis,2.5,250.85,651.15,paid
+2026-09-18,WO-5138,Marcus,Furnace tune-up,Edina,0.9,61.16,189,paid
+2026-09-18,WO-5151,Dale,Furnace tune-up,St. Louis Park,1.0,34.22,189,paid
+2026-09-18,WO-5266,Marcus,Furnace tune-up,Nokomis,1.3,35.64,189,unpaid
+2026-09-18,WO-5292,Tomas,AC repair,Uptown,2.7,124.21,505.18,paid
+2026-09-18,WO-5321,Priya,Furnace repair,Nokomis,1.8,162.1,443.84,paid
+2026-09-18,WO-5388,Priya,Furnace tune-up,Roseville,0.6,40.57,189,paid
+2026-09-18,WO-5459,Marcus,Duct cleaning,St. Louis Park,2.9,20.76,390.53,paid
+2026-09-18,WO-5469,Priya,Furnace tune-up,Nokomis,1.4,36.73,189,paid
+2026-09-19,WO-5320,Dale,Furnace tune-up,Edina,1.2,45.91,189,unpaid
+2026-09-19,WO-5461,Marcus,Furnace tune-up,Roseville,1.8,35.09,189,paid
+2026-09-20,WO-5143,Priya,Furnace tune-up,Uptown,1.1,41.55,189,unpaid
+2026-09-20,WO-5297,Dale,Furnace tune-up,Nokomis,0.8,50.62,189,paid
+2026-09-20,WO-5494,Tomas,Furnace tune-up,Uptown,1.5,46.32,189,paid
+2026-09-21,WO-5102,Dale,Furnace tune-up,Uptown,1.5,42.32,189,paid
+2026-09-21,WO-5106,Dale,Furnace tune-up,Nokomis,1.0,42.73,189,paid
+2026-09-21,WO-5111,Dale,Furnace repair,Nokomis,2.2,148.59,475.6,unpaid
+2026-09-21,WO-5126,Dale,Thermostat install,Longfellow,0.8,101.76,237.38,paid
+2026-09-21,WO-5205,Tomas,Furnace repair,Richfield,2.0,157.01,461.96,paid
+2026-09-21,WO-5271,Marcus,Duct cleaning,St. Louis Park,3.2,9.38,412.66,paid
+2026-09-21,WO-5430,Jen,Furnace tune-up,Edina,1.5,18.94,189,unpaid
+2026-09-21,WO-5442,Priya,Thermostat install,Roseville,1.3,69.21,255.93,paid
+2026-09-21,WO-5516,Marcus,Furnace tune-up,Nokomis,1.4,50.28,189,paid
+2026-09-21,WO-5519,Marcus,Duct cleaning,Roseville,1.8,19.55,251.39,paid
+2026-09-22,WO-5159,Tomas,Water heater install,Northeast,2.5,738.61,1309.62,paid
+2026-09-22,WO-5174,Dale,Furnace tune-up,Nokomis,0.6,31.45,189,paid
+2026-09-22,WO-5226,Jen,Furnace tune-up,Richfield,1.6,14.82,189,paid
+2026-09-22,WO-5253,Dale,Furnace repair,St. Louis Park,1.7,79.35,255.7,unpaid
+2026-09-23,WO-5113,Tomas,Furnace tune-up,Nokomis,1.3,21.97,189,paid
+2026-09-23,WO-5158,Marcus,Water heater install,Roseville,4.4,657.16,1437.17,paid
+2026-09-23,WO-5283,Dale,Furnace tune-up,Richfield,0.8,38.96,189,paid
+2026-09-23,WO-5371,Marcus,Furnace repair,Richfield,2.4,251.23,639.16,paid
+2026-09-23,WO-5473,Dale,Furnace tune-up,Longfellow,1.0,45.65,189,paid
+2026-09-24,WO-5125,Dale,Thermostat install,Roseville,1.4,181.74,336.28,paid
+2026-09-24,WO-5163,Marcus,Furnace tune-up,Longfellow,0.8,32.28,189,paid
+2026-09-24,WO-5188,Priya,Duct cleaning,Uptown,2.4,12.21,316.48,unpaid
+2026-09-24,WO-5220,Priya,Furnace repair,Roseville,1.8,225.53,529.47,paid
+2026-09-24,WO-5264,Tomas,Water heater install,Uptown,3.5,974.01,1752.41,paid
+2026-09-24,WO-5310,Priya,Furnace tune-up,Richfield,1.0,32.47,189,paid
+2026-09-24,WO-5398,Priya,Thermostat install,Roseville,0.9,165.46,335.87,paid
+2026-09-24,WO-5490,Jen,Thermostat install,Uptown,1.4,94.67,302.8,paid
+2026-09-25,WO-5137,Tomas,Furnace tune-up,Roseville,1.1,42.25,189,unpaid
+2026-09-25,WO-5252,Tomas,Duct cleaning,Longfellow,2.2,22.87,305.87,unpaid
+2026-09-25,WO-5364,Priya,Furnace tune-up,Uptown,1.0,40.67,189,paid
+2026-09-25,WO-5506,Jen,Furnace repair,St. Louis Park,2.7,237.65,658.33,paid
+2026-09-25,WO-5513,Priya,Furnace repair,Northeast,1.9,168.31,464.72,paid
+2026-09-26,WO-5286,Marcus,Water heater install,Richfield,3.1,1111.11,1887.5,paid
+2026-09-26,WO-5403,Dale,Furnace repair,Longfellow,2.3,194.72,440.3,paid
+2026-09-26,WO-5467,Tomas,Thermostat install,Edina,0.8,139.66,288.54,paid
+2026-09-27,WO-5121,Tomas,Furnace tune-up,Edina,1.1,36.23,189,unpaid
+2026-09-27,WO-5171,Tomas,Water heater install,Nokomis,3.6,229.68,760.07,paid
+2026-09-27,WO-5311,Dale,AC repair,Longfellow,2.3,237.8,608.53,paid
+2026-09-27,WO-5333,Jen,Furnace repair,Uptown,4.0,208.7,781.75,paid
+2026-09-27,WO-5493,Priya,Furnace tune-up,Longfellow,1.0,39.33,189,unpaid
+2026-09-28,WO-5124,Jen,Furnace repair,Nokomis,3.0,170.14,604.69,paid
+2026-09-28,WO-5198,Marcus,Furnace tune-up,Uptown,1.4,40.55,189,paid
+2026-09-28,WO-5284,Priya,Furnace repair,Longfellow,2.1,205.45,539.86,paid
+2026-09-28,WO-5298,Jen,Furnace repair,Longfellow,2.9,106.07,505.69,unpaid
+2026-09-28,WO-5402,Jen,Furnace tune-up,Longfellow,1.9,34.43,189,paid
+2026-09-29,WO-5245,Priya,Furnace tune-up,Nokomis,1.0,45.38,189,paid
+2026-09-29,WO-5278,Priya,Furnace tune-up,Roseville,1.3,23.77,189,paid
+2026-09-29,WO-5341,Jen,Water heater install,Richfield,4.3,1142.39,2079.73,paid
+2026-09-29,WO-5386,Priya,Duct cleaning,Nokomis,3.1,11.12,402.51,paid
+2026-09-29,WO-5409,Marcus,Furnace tune-up,Nokomis,0.8,29.77,189,unpaid
+2026-09-29,WO-5474,Tomas,Furnace repair,Edina,1.0,150.15,327.7,paid
+2026-09-30,WO-5123,Tomas,AC repair,Longfellow,0.7,61.84,170.98,paid
+2026-09-30,WO-5211,Marcus,Furnace repair,Longfellow,2.8,229.29,659.54,paid
+2026-09-30,WO-5326,Tomas,Thermostat install,Longfellow,0.9,39.5,165.82,unpaid
+2026-09-30,WO-5335,Dale,Furnace repair,Northeast,2.1,212.7,439.71,paid
+2026-09-30,WO-5401,Marcus,Thermostat install,Uptown,0.9,149.69,314.58,paid
+2026-09-30,WO-5419,Marcus,Furnace tune-up,Uptown,1.2,22.39,189,paid
+2026-09-30,WO-5480,Jen,Furnace repair,Richfield,2.5,194.03,574.44,paid
+2026-10-01,WO-5129,Jen,Furnace tune-up,Richfield,0.6,34.13,189,paid
+2026-10-01,WO-5145,Jen,Furnace tune-up,Northeast,1.1,35.17,189,paid
+2026-10-01,WO-5217,Jen,Furnace repair,Nokomis,3.0,206.76,654.13,unpaid
+2026-10-01,WO-5260,Marcus,AC repair,Northeast,2.0,227.56,557.21,paid
+2026-10-01,WO-5512,Marcus,AC repair,Longfellow,2.3,109.74,435.65,paid
+2026-10-02,WO-5296,Marcus,Furnace repair,Roseville,1.7,128.38,385.81,paid
+2026-10-02,WO-5301,Marcus,Furnace tune-up,Roseville,1.3,39.23,189,paid
+2026-10-02,WO-5318,Dale,Furnace tune-up,Edina,0.6,39.95,189,paid
+2026-10-02,WO-5466,Marcus,Thermostat install,Edina,1.3,80.4,271.04,unpaid
+2026-10-03,WO-5196,Marcus,Thermostat install,Northeast,1.7,86.94,329.87,paid
+2026-10-03,WO-5276,Marcus,AC repair,St. Louis Park,2.3,217.99,581.79,paid
+2026-10-03,WO-5354,Tomas,Furnace tune-up,St. Louis Park,1.2,26.73,189,paid
+2026-10-04,WO-5241,Priya,Furnace tune-up,Roseville,1.4,32.0,189,paid
+2026-10-04,WO-5282,Marcus,Furnace repair,Richfield,1.9,183.34,485.01,paid
+2026-10-04,WO-5368,Tomas,Furnace repair,Richfield,2.0,189.6,505.96,paid
+2026-10-04,WO-5395,Dale,Furnace repair,Longfellow,1.5,221.46,486.47,paid
+2026-10-04,WO-5432,Dale,Furnace tune-up,Nokomis,1.0,50.88,189,paid
+2026-10-04,WO-5463,Priya,Furnace repair,Nokomis,3.0,90.66,497.39,unpaid
+2026-10-04,WO-5483,Marcus,Furnace repair,Richfield,2.6,179.7,567.6,unpaid
+2026-10-05,WO-5192,Priya,Furnace tune-up,Richfield,1.7,45.15,189,unpaid
+2026-10-05,WO-5218,Tomas,Furnace tune-up,St. Louis Park,1.3,16.59,189,paid
+2026-10-05,WO-5244,Marcus,Furnace repair,Northeast,2.3,161.75,505.86,paid
+2026-10-05,WO-5374,Jen,Furnace tune-up,Edina,1.4,31.31,189,unpaid
+2026-10-05,WO-5378,Dale,Thermostat install,Uptown,0.5,73.6,129.49,paid
+2026-10-05,WO-5399,Dale,Furnace repair,Nokomis,2.3,154.1,495.53,paid
+2026-10-05,WO-5405,Jen,AC repair,Edina,1.8,159.87,440.82,paid
+2026-10-06,WO-5100,Tomas,Furnace tune-up,Richfield,1.3,32.87,189,unpaid
+2026-10-06,WO-5116,Marcus,Furnace repair,Edina,3.5,161.66,655.74,paid
+2026-10-06,WO-5222,Priya,Furnace tune-up,Northeast,1.4,40.61,189,paid
+2026-10-06,WO-5256,Priya,Thermostat install,Longfellow,1.3,119.66,324.04,unpaid
+2026-10-06,WO-5257,Marcus,AC repair,St. Louis Park,2.2,162.49,494.36,unpaid
+2026-10-06,WO-5420,Tomas,Thermostat install,Nokomis,0.5,164.39,284.43,paid
+2026-10-06,WO-5438,Marcus,Duct cleaning,Roseville,1.8,27.4,261.99,paid
+2026-10-06,WO-5481,Dale,Furnace repair,St. Louis Park,1.4,188.02,343.06,paid
+2026-10-07,WO-5179,Jen,Water heater install,Richfield,5.5,850.62,1835.84,paid
+2026-10-07,WO-5183,Priya,Furnace repair,Northeast,2.0,150.03,452.54,paid
+2026-10-07,WO-5261,Priya,Furnace tune-up,Roseville,1.6,26.86,189,paid
+2026-10-07,WO-5450,Marcus,Furnace tune-up,St. Louis Park,1.1,37.66,189,paid
+2026-10-07,WO-5492,Priya,Furnace tune-up,Nokomis,1.1,34.91,189,paid
+2026-10-08,WO-5147,Priya,Furnace tune-up,Longfellow,0.7,32.92,189,paid
+2026-10-08,WO-5148,Dale,Furnace tune-up,St. Louis Park,1.4,26.95,151.2,paid
+2026-10-08,WO-5155,Priya,Water heater install,St. Louis Park,4.5,858.63,1721.65,paid
+2026-10-08,WO-5228,Jen,Furnace repair,Richfield,2.8,114.89,505.1,paid
+2026-10-08,WO-5255,Tomas,Furnace tune-up,Nokomis,0.8,28.4,189,paid
+2026-10-08,WO-5359,Marcus,Furnace tune-up,Uptown,1.3,26.62,189,unpaid
+2026-10-08,WO-5382,Priya,Furnace repair,Roseville,3.0,168.37,602.3,paid
+2026-10-08,WO-5428,Tomas,Duct cleaning,Roseville,1.9,22.69,268.13,unpaid
+2026-10-08,WO-5484,Marcus,Duct cleaning,Nokomis,1.5,20.1,214.63,paid
+2026-10-08,WO-5498,Marcus,AC repair,Roseville,2.6,77.97,430.26,paid
+2026-10-09,WO-5114,Jen,Furnace tune-up,Richfield,1.5,61.1,189,paid
+2026-10-09,WO-5133,Dale,Water heater install,Uptown,3.5,687.76,1092.78,paid
+2026-10-09,WO-5164,Tomas,Thermostat install,Northeast,0.8,104.79,241.47,unpaid
+2026-10-09,WO-5275,Dale,Furnace tune-up,Roseville,1.4,26.08,189,paid
+2026-10-09,WO-5317,Tomas,Water heater install,Northeast,5.8,914.22,1959.2,unpaid
+2026-10-09,WO-5358,Marcus,Furnace repair,Uptown,2.1,224.72,565.87,paid
+2026-10-09,WO-5390,Dale,Water heater install,Northeast,3.0,919.43,1616.23,paid
+2026-10-09,WO-5416,Priya,Furnace repair,Richfield,1.9,161.13,455.03,unpaid
+2026-10-10,WO-5154,Marcus,Furnace tune-up,Edina,0.9,44.93,189,paid
+2026-10-10,WO-5193,Priya,Furnace repair,Longfellow,2.2,170.31,504.92,paid
+2026-10-10,WO-5234,Priya,Thermostat install,St. Louis Park,1.2,128.62,323.64,paid
+2026-10-10,WO-5267,Dale,Furnace repair,Roseville,1.7,251.94,442.1,paid
+2026-10-10,WO-5444,Marcus,Furnace repair,Roseville,2.4,142.19,491.96,unpaid
+2026-10-11,WO-5219,Jen,Furnace repair,Northeast,2.5,168.64,540.16,paid
+2026-10-11,WO-5462,Marcus,Furnace tune-up,Longfellow,1.0,49.42,189,unpaid
+2026-10-11,WO-5471,Dale,Furnace tune-up,Nokomis,1.5,33.56,151.2,unpaid
+2026-10-12,WO-5194,Jen,AC repair,Nokomis,1.8,177.73,464.94,unpaid
+2026-10-12,WO-5396,Priya,Furnace repair,Roseville,2.9,188.54,617.03,paid
+2026-10-12,WO-5497,Jen,Furnace tune-up,Edina,1.8,22.23,189,paid
+2026-10-13,WO-5105,Tomas,Furnace tune-up,Longfellow,1.4,38.72,189,paid
+2026-10-13,WO-5120,Dale,Thermostat install,St. Louis Park,0.8,94.32,227.33,paid
+2026-10-13,WO-5206,Tomas,Furnace repair,St. Louis Park,2.3,227.81,595.04,unpaid
+2026-10-13,WO-5212,Dale,Furnace tune-up,Edina,1.1,19.43,189,paid
+2026-10-13,WO-5216,Jen,Furnace tune-up,Longfellow,1.2,46.55,189,paid
+2026-10-13,WO-5393,Jen,Furnace tune-up,Uptown,0.9,44.09,189,unpaid
+2026-10-13,WO-5445,Jen,Furnace repair,Richfield,2.5,162.52,531.9,unpaid
+2026-10-13,WO-5482,Dale,Furnace tune-up,Longfellow,0.9,39.49,189,unpaid
+2026-10-14,WO-5118,Dale,Furnace tune-up,Uptown,1.0,44.04,151.2,unpaid
+2026-10-14,WO-5142,Priya,Furnace repair,Roseville,2.7,158.69,551.73,paid
+2026-10-14,WO-5247,Tomas,Thermostat install,Richfield,0.5,162.84,282.33,paid
+2026-10-14,WO-5277,Priya,Water heater install,Northeast,4.8,1365.42,2443.32,unpaid
+2026-10-14,WO-5337,Priya,Furnace tune-up,Roseville,0.8,35.52,189,paid
+2026-10-14,WO-5360,Tomas,Furnace repair,Nokomis,1.5,155.97,398.06,paid
+2026-10-14,WO-5372,Dale,AC repair,Uptown,2.1,257.3,609.86,unpaid
+2026-10-14,WO-5435,Marcus,AC repair,Edina,1.5,153.89,395.25,paid
+2026-10-14,WO-5468,Dale,Furnace tune-up,Roseville,0.5,22.39,189,unpaid
+2026-10-14,WO-5487,Tomas,AC repair,Uptown,2.2,177.21,514.23,unpaid
+2026-10-15,WO-5258,Jen,Thermostat install,Richfield,1.5,149.9,389.87,unpaid
+2026-10-15,WO-5365,Dale,Furnace tune-up,Edina,0.8,33.79,189,paid
+2026-10-15,WO-5499,Marcus,Duct cleaning,Roseville,2.1,13.35,280.52,paid
+2026-10-15,WO-5508,Priya,Furnace repair,St. Louis Park,3.7,100.21,597.78,paid
+</textarea>
+  <div class="row"><label class="btn ghost" style="background:transparent;color:var(--ink);border:1px solid var(--rule)">Add files<input id="files" type="file" multiple accept=".csv,text/csv,.tsv,.txt" hidden></label><span class="hint" id="fileList">A .csv file, up to 3 MB</span></div><div class="row"><button id="run">Write the report</button><button class="ghost" id="clear">Paste your own</button></div>
+  <p class="hint" id="freeLine">Free: the first 200 rows of whatever you paste. $5 once: all of them, with the tables to download.</p>
+ </section>
+ <section class="pane"><h2><span>The report</span><span id="outState" class="hint">done on the example</span></h2>
+  <div id="out"></div>
+ </section>
+</div>
+<section class="pay" id="pay">
+ <h3 id="payH">All of them, for $5</h3>
+ <p id="payP">Every row of every export you bring, as often as you like, with the tables behind the report to download. Ask a different question each time.</p>
+ <div class="row"><button id="buy">Unlock for $5</button><span class="hint">Once. Card or Link, through Stripe.</span></div>
+ <div id="checkout"></div>
+ <div class="pw"><input id="pwIn" placeholder="Have a password? XXXX-XXXX-XXXX" autocomplete="off" aria-label="Password"><button class="ghost" id="pwGo">Unlock</button></div>
+ <p class="hint" id="pwMsg"></p>
+</section>
+<p class="custom" id="custom">Want this built around your team&rsquo;s actual workflow? <a id="customLink" href="mailto:aidan@brickandmortar.dev?subject=Report From Export%20for%20our%20team">Email aidan@brickandmortar.dev</a>.</p>
+<footer class="foot">The work orders on the left are made up. Put a line starting <code>QUESTION:</code> at the top to ask what you want to know, then paste the CSV with its header row, or add the file. The model plans which numbers to pull; code computes them over every row; any sentence with a number the code didn't produce is dropped.<br>Built by <a href="https://brickandmortar.dev">Brick &amp; Mortar</a>, Minneapolis. The example is synthetic. What you paste is sent to the model to do the work and is not stored.</footer>
+</main>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+const BOOT={"product": "report-from-export", "token": "", "free_items": 200, "item_word": "rows", "example_output": {"question": "How did September go, and what should I look at before October closes?", "headline": "September brought in $68,643.15, down from $83,928.93 in August even though you completed more jobs (169 vs 161), and October's unpaid invoices are the thing to chase before month-end.", "findings": [{"text": "More jobs, less money in September: the mix shifted toward cheaper work. Furnace tune-ups jumped to 75 jobs ($14,099.40) from 20 in August, while AC repair fell to $3,678.91 from $17,073.40 and furnace repair fell to $22,327.03 from $30,783.25. Look for ways to turn tune-up visits into repair or replacement work.", "metric_ids": ["m1", "m2", "m4"]}, {"text": "Unpaid work is piling up in October. 31.11% of October jobs are unpaid ($13,587.91 across 28 jobs), compared with 15.38% in September. Start collection calls now, before October closes.", "metric_ids": ["m5", "m7"]}, {"text": "Start with Tomas and Jen. They carry the most unpaid invoices: Tomas has $7,658.15 across 17 jobs and Jen has $7,361.87 across 15. Check whether their customers are being asked to pay at the time of service.", "metric_ids": ["m6"]}, {"text": "Tomas led September with $16,452.25 in revenue. Jen dropped to $12,041.67 on 23 jobs, down from $17,862.45 in August. Priya brought in $9,786.66 on 30 jobs, so her jobs are running small. Review Priya's job assignments and pricing.", "metric_ids": ["m3"]}, {"text": "October so far stands at $39,168.85 on 90 jobs. Priya has already brought in $10,414.37 this month, more than her whole September. Water heater installs ($10,669.02 on just 6 jobs) remain your highest-value work, so book more of them.", "metric_ids": ["m1", "m2", "m3", "m4"]}], "dropped": 0, "metrics": [{"id": "m1", "label": "Revenue by month", "op": "sum", "column": "invoice_total", "group_by": "", "by_month": true, "filter_column": "", "filter_value": "", "unit": "", "rows": [{"group": "2026-08", "value": 83928.93, "n": 161}, {"group": "2026-09", "value": 68643.15, "n": 169}, {"group": "2026-10", "value": 39168.85, "n": 90}]}, {"id": "m2", "label": "Jobs completed by month", "op": "count", "column": "work_order", "group_by": "", "by_month": true, "filter_column": "", "filter_value": "", "unit": "", "rows": [{"group": "2026-08", "value": 161, "n": 161}, {"group": "2026-09", "value": 169, "n": 169}, {"group": "2026-10", "value": 90, "n": 90}]}, {"id": "m3", "label": "Revenue by tech by month", "op": "sum", "column": "invoice_total", "group_by": "tech", "by_month": true, "filter_column": "", "filter_value": "", "unit": "", "rows": [{"group": "Dale \u00b7 2026-08", "value": 18823.34, "n": 38}, {"group": "Jen \u00b7 2026-08", "value": 17862.45, "n": 35}, {"group": "Marcus \u00b7 2026-08", "value": 16688.89, "n": 31}, {"group": "Tomas \u00b7 2026-09", "value": 16452.25, "n": 38}, {"group": "Priya \u00b7 2026-08", "value": 16378.19, "n": 29}, {"group": "Marcus \u00b7 2026-09", "value": 15800.39, "n": 41}, {"group": "Dale \u00b7 2026-09", "value": 14562.18, "n": 37}, {"group": "Tomas \u00b7 2026-08", "value": 14176.06, "n": 28}, {"group": "Jen \u00b7 2026-09", "value": 12041.67, "n": 23}, {"group": "Priya \u00b7 2026-10", "value": 10414.37, "n": 19}, {"group": "Priya \u00b7 2026-09", "value": 9786.66, "n": 30}, {"group": "Marcus \u00b7 2026-10", "value": 8855.42, "n": 23}, {"group": "Dale \u00b7 2026-10", "value": 7219.45, "n": 19}, {"group": "Jen \u00b7 2026-10", "value": 6685.76, "n": 15}, {"group": "Tomas \u00b7 2026-10", "value": 5993.85, "n": 14}]}, {"id": "m4", "label": "Revenue by job type by month", "op": "sum", "column": "invoice_total", "group_by": "job_type", "by_month": true, "filter_column": "", "filter_value": "", "unit": "", "rows": [{"group": "Furnace repair \u00b7 2026-08", "value": 30783.25, "n": 55}, {"group": "Furnace repair \u00b7 2026-09", "value": 22327.03, "n": 43}, {"group": "Water heater install \u00b7 2026-08", "value": 20426.36, "n": 14}, {"group": "Water heater install \u00b7 2026-09", "value": 18609.34, "n": 12}, {"group": "AC repair \u00b7 2026-08", "value": 17073.4, "n": 38}, {"group": "Furnace tune-up \u00b7 2026-09", "value": 14099.4, "n": 75}, {"group": "Furnace repair \u00b7 2026-10", "value": 13434.08, "n": 26}, {"group": "Water heater install \u00b7 2026-10", "value": 10669.02, "n": 6}, {"group": "Thermostat install \u00b7 2026-09", "value": 6715.06, "n": 22}, {"group": "Furnace tune-up \u00b7 2026-10", "value": 6312.6, "n": 34}, {"group": "Thermostat install \u00b7 2026-08", "value": 6144.91, "n": 20}, {"group": "Duct cleaning \u00b7 2026-08", "value": 5758.81, "n": 14}, {"group": "AC repair \u00b7 2026-10", "value": 4924.37, "n": 10}, {"group": "Furnace tune-up \u00b7 2026-08", "value": 3742.2, "n": 20}, {"group": "AC repair \u00b7 2026-09", "value": 3678.91, "n": 8}]}, {"id": "m5", "label": "Unpaid invoice amount by month", "op": "sum", "column": "invoice_total", "group_by": "", "by_month": true, "filter_column": "status", "filter_value": "unpaid", "unit": "", "rows": [{"group": "2026-08", "value": 11306.47, "n": 22}, {"group": "2026-09", "value": 7907.26, "n": 26}, {"group": "2026-10", "value": 13587.91, "n": 28}]}, {"id": "m6", "label": "Unpaid invoice amount by tech", "op": "sum", "column": "invoice_total", "group_by": "tech", "by_month": false, "filter_column": "status", "filter_value": "unpaid", "unit": "", "rows": [{"group": "Tomas", "value": 7658.15, "n": 17}, {"group": "Jen", "value": 7361.87, "n": 15}, {"group": "Dale", "value": 6766.72, "n": 18}, {"group": "Priya", "value": 5638.03, "n": 11}, {"group": "Marcus", "value": 5376.87, "n": 15}]}, {"id": "m7", "label": "Share of jobs unpaid", "op": "share_of_rows", "column": "status", "group_by": "", "by_month": true, "filter_column": "", "filter_value": "unpaid", "unit": "%", "rows": [{"group": "2026-08", "value": 13.66, "n": 161}, {"group": "2026-09", "value": 15.38, "n": 169}, {"group": "2026-10", "value": 31.11, "n": 90}]}, {"id": "m8", "label": "Labor hours by tech by month", "op": "sum", "column": "labor_hours", "group_by": "tech", "by_month": true, "filter_column": "", "filter_value": "", "unit": "", "rows": [{"group": "Jen \u00b7 2026-08", "value": 84.6, "n": 35}, {"group": "Marcus \u00b7 2026-08", "value": 76, "n": 31}, {"group": "Dale \u00b7 2026-08", "value": 73.7, "n": 38}, {"group": "Priya \u00b7 2026-08", "value": 71, "n": 29}, {"group": "Marcus \u00b7 2026-09", "value": 70, "n": 41}, {"group": "Tomas \u00b7 2026-09", "value": 65.6, "n": 38}, {"group": "Jen \u00b7 2026-09", "value": 53.9, "n": 23}, {"group": "Dale \u00b7 2026-09", "value": 53.2, "n": 37}, {"group": "Tomas \u00b7 2026-08", "value": 52.9, "n": 28}, {"group": "Priya \u00b7 2026-09", "value": 45.9, "n": 30}, {"group": "Marcus \u00b7 2026-10", "value": 43.4, "n": 23}, {"group": "Priya \u00b7 2026-10", "value": 41.9, "n": 19}, {"group": "Jen \u00b7 2026-10", "value": 29.9, "n": 15}, {"group": "Dale \u00b7 2026-10", "value": 27, "n": 19}, {"group": "Tomas \u00b7 2026-10", "value": 23.5, "n": 14}]}], "example": true}, "price": 5};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const track=(name,data={})=>{data={...data,token:BOOT.token};try{window.va("event",{name,data})}catch(e){}try{if(window.posthog&&posthog.capture)posthog.capture(name,data)}catch(e){}};
+let PW=null;try{PW=localStorage.getItem("pw:"+BOOT.product)}catch(e){}
+let LAST=null;let FILES=[];
+const fi=document.getElementById("files");if(fi)fi.onchange=async()=>{FILES=[];let tot=0;for(const f of fi.files){if(tot+f.size>3.2e6)break;tot+=f.size;const b64=await new Promise(r=>{const R=new FileReader();R.onload=()=>r(String(R.result).split(",")[1]);R.readAsDataURL(f)});FILES.push({name:f.name,type:f.type,data:b64})}$("fileList").textContent=FILES.map(f=>f.name).join(", ")||"none";$("inState").textContent="yours";track("files_added",{n:FILES.length})};
+function renderOutput(out, el, unlocked) {
+  const fmt = (m, v) => v == null ? "" : (/(total|revenue|cost|amount|price|sales|\$)/i.test(m.label + m.column) && m.op !== "count" && m.unit !== "%"
+    ? "$" + Number(v).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : Number(v).toLocaleString("en-US") + (m.unit || ""));
+  const h = [`<p class="q">${esc(out.question || "")}</p><h3 class="head">${esc(out.headline || "")}</h3><ol class="finds">`];
+  for (const f of out.findings || []) h.push(`<li>${esc(f.text)}</li>`);
+  h.push(`</ol>`);
+  if (out.dropped) h.push(`<p class="hint">${out.dropped} sentence${out.dropped > 1 ? "s were" : " was"} left out because a number in it wasn't one the tool computed.</p>`);
+  h.push(`<details><summary>The numbers behind it (${(out.metrics || []).length} tables, computed from every row)</summary>`);
+  for (const m of out.metrics || []) {
+    const max = Math.max(...m.rows.map(r => Math.abs(r.value || 0)), 1);
+    h.push(`<div class="mt"><b>${esc(m.label)}</b>${m.filter_column ? ` <span class="hint">where ${esc(m.filter_column)} = ${esc(m.filter_value)}</span>` : ""}<table>${m.rows.map(r =>
+      `<tr><td>${esc(r.group)}</td><td class="bar"><i style="width:${Math.round(100 * Math.abs(r.value || 0) / max)}%"></i></td><td class="r">${fmt(m, r.value)}</td></tr>`).join("")}</table></div>`);
+  }
+  h.push(`</details>`);
+  if (unlocked || out.example) h.push(`<div class="row"><button class="ghost" id="csv">Download the tables</button></div>`);
+  el.innerHTML = h.join("");
+  const c = el.querySelector("#csv");
+  if (c) c.onclick = () => {
+    const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const rows = [["metric", "group", "value", "rows"].join(",")];
+    for (const m of out.metrics) for (const r of m.rows) rows.push([m.label, r.group, r.value, r.n].map(q).join(","));
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" })); a.download = "report-tables.csv"; a.click(); track("download");
+  };
+}
+
+function show(out){LAST=out;const el=$("out");el.innerHTML="";renderOutput(out,el,!!out.unlocked);
+ if(!out.unlocked&&out.total>out.shown){const d=document.createElement("div");d.className="lock";d.innerHTML=`It did the first ${out.shown} of your ${out.total} ${esc(BOOT.item_word)}. <a href="#pay" id="lockA">Unlock all ${out.total} for $5</a>.`;el.appendChild(d);$("lockA").onclick=()=>track("paywall_click",{why:"more_items"})}}
+show({...BOOT.example_output,unlocked:false,shown:0,total:0});
+$("clear").onclick=()=>{$("inp").value="";$("inp").focus();$("inState").textContent="yours";track("paste_own")};
+$("inp").addEventListener("input",()=>{$("inState").textContent="yours"},{once:true});
+$("run").onclick=async()=>{const b=$("run");b.disabled=true;b.textContent="Working…";$("outState").textContent="working";track("run",{own:$("inState").textContent==="yours",unlocked:!!PW});
+ try{const r=await fetch("/api/run",{method:"POST",headers:{"Content-Type":"application/json",...(PW?{"x-password":PW}:{})},body:JSON.stringify({input:$("inp").value,files:FILES})});const j=await r.json();
+  if(!r.ok){$("out").innerHTML=`<p class="err">${esc(j.error||"Something went wrong.")}</p>`;$("outState").textContent="error";track("run_error",{status:r.status});if(r.status===401){PW=null;try{localStorage.removeItem("pw:"+BOOT.product)}catch(e){}}}
+  else{show(j);$("outState").textContent=j.unlocked?"done, unlocked":"done";track("run_ok",{shown:j.shown,total:j.total})}}
+ catch(e){$("out").innerHTML='<p class="err">Network hiccup. Try again.</p>'}
+ b.disabled=false;b.textContent="Write the report"};
+function unlockedUI(via){$("payH").innerHTML='<span class="unl">Unlocked</span> Every run does all of them';$("payP").textContent="Your password is saved in this browser. It works on any device.";$("buy").parentNode.hidden=true;$("freeLine").textContent="Unlocked: every row you paste, with the tables to download.";track("unlock",{via})}
+async function tryPw(pw,via){const r=await fetch("/api/check",{method:"POST",headers:{"x-password":pw}});if(r.ok){PW=pw;try{localStorage.setItem("pw:"+BOOT.product,pw)}catch(e){}unlockedUI(via);return true}$("pwMsg").textContent="That password didn't match.";return false}
+$("pwGo").onclick=()=>tryPw($("pwIn").value.trim(),"typed");
+let CO=null;
+$("buy").onclick=async()=>{track("checkout_open");if(CO){$("checkout").scrollIntoView({behavior:"smooth"});return}
+ const b=$("buy");b.disabled=true;try{const r=await fetch("/api/checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({token:BOOT.token})});const j=await r.json();if(!j.clientSecret)throw 0;
+ const st=Stripe("pk_live_51TUvvcBzD4mN8eOD28H6oQkFwFHwF1SLtWxN1vHRmnSxntWFefgd33mEIVmjv8ekxWgkZft3OpPlzmVXMIeHPBwj003998hjTf");CO=await st.initEmbeddedCheckout({fetchClientSecret:async()=>j.clientSecret});CO.mount("#checkout")}catch(e){$("pwMsg").textContent="Checkout couldn't start. Try again in a minute."}b.disabled=false};
+$("customLink").onclick=()=>track("custom_click");
+(async()=>{const u=new URLSearchParams(location.search);const sid=u.get("paid"),pw=u.get("pw");
+ if(pw){await tryPw(pw,"link")}else if(PW){unlockedUI("stored")}
+ if(sid){const r=await fetch("/api/session-status?session_id="+encodeURIComponent(sid));const j=await r.json();
+  if(j.paid&&j.password){track("paid");$("payH").textContent="Paid. Your password:";$("payP").innerHTML=`<b style="font:600 22px var(--mono);letter-spacing:2px">${esc(j.password)}</b><br>It is also in the Stripe receipt sent to ${esc(j.email||"your email")}. Keep it: it unlocks this tool on any device.`;PW=j.password;try{localStorage.setItem("pw:"+BOOT.product,PW)}catch(e){}$("buy").parentNode.hidden=true;$("pay").scrollIntoView()}}
+ track("preview_open")})();
+</script></body></html>

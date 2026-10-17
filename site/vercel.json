@@ -1,0 +1,1 @@
+{"buildCommand":"echo build","outputDirectory":".","functions":{"api/run.js":{"maxDuration":300}}}

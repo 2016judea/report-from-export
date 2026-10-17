@@ -1,0 +1,462 @@
+{
+ "question": "How did September go, and what should I look at before October closes?",
+ "headline": "September brought in $68,643.15, down from $83,928.93 in August even though you completed more jobs (169 vs 161), and October's unpaid invoices are the thing to chase before month-end.",
+ "findings": [
+  {
+   "text": "More jobs, less money in September: the mix shifted toward cheaper work. Furnace tune-ups jumped to 75 jobs ($14,099.40) from 20 in August, while AC repair fell to $3,678.91 from $17,073.40 and furnace repair fell to $22,327.03 from $30,783.25. Look for ways to turn tune-up visits into repair or replacement work.",
+   "metric_ids": [
+    "m1",
+    "m2",
+    "m4"
+   ]
+  },
+  {
+   "text": "Unpaid work is piling up in October. 31.11% of October jobs are unpaid ($13,587.91 across 28 jobs), compared with 15.38% in September. Start collection calls now, before October closes.",
+   "metric_ids": [
+    "m5",
+    "m7"
+   ]
+  },
+  {
+   "text": "Start with Tomas and Jen. They carry the most unpaid invoices: Tomas has $7,658.15 across 17 jobs and Jen has $7,361.87 across 15. Check whether their customers are being asked to pay at the time of service.",
+   "metric_ids": [
+    "m6"
+   ]
+  },
+  {
+   "text": "Tomas led September with $16,452.25 in revenue. Jen dropped to $12,041.67 on 23 jobs, down from $17,862.45 in August. Priya brought in $9,786.66 on 30 jobs, so her jobs are running small. Review Priya's job assignments and pricing.",
+   "metric_ids": [
+    "m3"
+   ]
+  },
+  {
+   "text": "October so far stands at $39,168.85 on 90 jobs. Priya has already brought in $10,414.37 this month, more than her whole September. Water heater installs ($10,669.02 on just 6 jobs) remain your highest-value work, so book more of them.",
+   "metric_ids": [
+    "m1",
+    "m2",
+    "m3",
+    "m4"
+   ]
+  }
+ ],
+ "dropped": 0,
+ "metrics": [
+  {
+   "id": "m1",
+   "label": "Revenue by month",
+   "op": "sum",
+   "column": "invoice_total",
+   "group_by": "",
+   "by_month": true,
+   "filter_column": "",
+   "filter_value": "",
+   "unit": "",
+   "rows": [
+    {
+     "group": "2026-08",
+     "value": 83928.93,
+     "n": 161
+    },
+    {
+     "group": "2026-09",
+     "value": 68643.15,
+     "n": 169
+    },
+    {
+     "group": "2026-10",
+     "value": 39168.85,
+     "n": 90
+    }
+   ]
+  },
+  {
+   "id": "m2",
+   "label": "Jobs completed by month",
+   "op": "count",
+   "column": "work_order",
+   "group_by": "",
+   "by_month": true,
+   "filter_column": "",
+   "filter_value": "",
+   "unit": "",
+   "rows": [
+    {
+     "group": "2026-08",
+     "value": 161,
+     "n": 161
+    },
+    {
+     "group": "2026-09",
+     "value": 169,
+     "n": 169
+    },
+    {
+     "group": "2026-10",
+     "value": 90,
+     "n": 90
+    }
+   ]
+  },
+  {
+   "id": "m3",
+   "label": "Revenue by tech by month",
+   "op": "sum",
+   "column": "invoice_total",
+   "group_by": "tech",
+   "by_month": true,
+   "filter_column": "",
+   "filter_value": "",
+   "unit": "",
+   "rows": [
+    {
+     "group": "Dale · 2026-08",
+     "value": 18823.34,
+     "n": 38
+    },
+    {
+     "group": "Jen · 2026-08",
+     "value": 17862.45,
+     "n": 35
+    },
+    {
+     "group": "Marcus · 2026-08",
+     "value": 16688.89,
+     "n": 31
+    },
+    {
+     "group": "Tomas · 2026-09",
+     "value": 16452.25,
+     "n": 38
+    },
+    {
+     "group": "Priya · 2026-08",
+     "value": 16378.19,
+     "n": 29
+    },
+    {
+     "group": "Marcus · 2026-09",
+     "value": 15800.39,
+     "n": 41
+    },
+    {
+     "group": "Dale · 2026-09",
+     "value": 14562.18,
+     "n": 37
+    },
+    {
+     "group": "Tomas · 2026-08",
+     "value": 14176.06,
+     "n": 28
+    },
+    {
+     "group": "Jen · 2026-09",
+     "value": 12041.67,
+     "n": 23
+    },
+    {
+     "group": "Priya · 2026-10",
+     "value": 10414.37,
+     "n": 19
+    },
+    {
+     "group": "Priya · 2026-09",
+     "value": 9786.66,
+     "n": 30
+    },
+    {
+     "group": "Marcus · 2026-10",
+     "value": 8855.42,
+     "n": 23
+    },
+    {
+     "group": "Dale · 2026-10",
+     "value": 7219.45,
+     "n": 19
+    },
+    {
+     "group": "Jen · 2026-10",
+     "value": 6685.76,
+     "n": 15
+    },
+    {
+     "group": "Tomas · 2026-10",
+     "value": 5993.85,
+     "n": 14
+    }
+   ]
+  },
+  {
+   "id": "m4",
+   "label": "Revenue by job type by month",
+   "op": "sum",
+   "column": "invoice_total",
+   "group_by": "job_type",
+   "by_month": true,
+   "filter_column": "",
+   "filter_value": "",
+   "unit": "",
+   "rows": [
+    {
+     "group": "Furnace repair · 2026-08",
+     "value": 30783.25,
+     "n": 55
+    },
+    {
+     "group": "Furnace repair · 2026-09",
+     "value": 22327.03,
+     "n": 43
+    },
+    {
+     "group": "Water heater install · 2026-08",
+     "value": 20426.36,
+     "n": 14
+    },
+    {
+     "group": "Water heater install · 2026-09",
+     "value": 18609.34,
+     "n": 12
+    },
+    {
+     "group": "AC repair · 2026-08",
+     "value": 17073.4,
+     "n": 38
+    },
+    {
+     "group": "Furnace tune-up · 2026-09",
+     "value": 14099.4,
+     "n": 75
+    },
+    {
+     "group": "Furnace repair · 2026-10",
+     "value": 13434.08,
+     "n": 26
+    },
+    {
+     "group": "Water heater install · 2026-10",
+     "value": 10669.02,
+     "n": 6
+    },
+    {
+     "group": "Thermostat install · 2026-09",
+     "value": 6715.06,
+     "n": 22
+    },
+    {
+     "group": "Furnace tune-up · 2026-10",
+     "value": 6312.6,
+     "n": 34
+    },
+    {
+     "group": "Thermostat install · 2026-08",
+     "value": 6144.91,
+     "n": 20
+    },
+    {
+     "group": "Duct cleaning · 2026-08",
+     "value": 5758.81,
+     "n": 14
+    },
+    {
+     "group": "AC repair · 2026-10",
+     "value": 4924.37,
+     "n": 10
+    },
+    {
+     "group": "Furnace tune-up · 2026-08",
+     "value": 3742.2,
+     "n": 20
+    },
+    {
+     "group": "AC repair · 2026-09",
+     "value": 3678.91,
+     "n": 8
+    }
+   ]
+  },
+  {
+   "id": "m5",
+   "label": "Unpaid invoice amount by month",
+   "op": "sum",
+   "column": "invoice_total",
+   "group_by": "",
+   "by_month": true,
+   "filter_column": "status",
+   "filter_value": "unpaid",
+   "unit": "",
+   "rows": [
+    {
+     "group": "2026-08",
+     "value": 11306.47,
+     "n": 22
+    },
+    {
+     "group": "2026-09",
+     "value": 7907.26,
+     "n": 26
+    },
+    {
+     "group": "2026-10",
+     "value": 13587.91,
+     "n": 28
+    }
+   ]
+  },
+  {
+   "id": "m6",
+   "label": "Unpaid invoice amount by tech",
+   "op": "sum",
+   "column": "invoice_total",
+   "group_by": "tech",
+   "by_month": false,
+   "filter_column": "status",
+   "filter_value": "unpaid",
+   "unit": "",
+   "rows": [
+    {
+     "group": "Tomas",
+     "value": 7658.15,
+     "n": 17
+    },
+    {
+     "group": "Jen",
+     "value": 7361.87,
+     "n": 15
+    },
+    {
+     "group": "Dale",
+     "value": 6766.72,
+     "n": 18
+    },
+    {
+     "group": "Priya",
+     "value": 5638.03,
+     "n": 11
+    },
+    {
+     "group": "Marcus",
+     "value": 5376.87,
+     "n": 15
+    }
+   ]
+  },
+  {
+   "id": "m7",
+   "label": "Share of jobs unpaid",
+   "op": "share_of_rows",
+   "column": "status",
+   "group_by": "",
+   "by_month": true,
+   "filter_column": "",
+   "filter_value": "unpaid",
+   "unit": "%",
+   "rows": [
+    {
+     "group": "2026-08",
+     "value": 13.66,
+     "n": 161
+    },
+    {
+     "group": "2026-09",
+     "value": 15.38,
+     "n": 169
+    },
+    {
+     "group": "2026-10",
+     "value": 31.11,
+     "n": 90
+    }
+   ]
+  },
+  {
+   "id": "m8",
+   "label": "Labor hours by tech by month",
+   "op": "sum",
+   "column": "labor_hours",
+   "group_by": "tech",
+   "by_month": true,
+   "filter_column": "",
+   "filter_value": "",
+   "unit": "",
+   "rows": [
+    {
+     "group": "Jen · 2026-08",
+     "value": 84.6,
+     "n": 35
+    },
+    {
+     "group": "Marcus · 2026-08",
+     "value": 76,
+     "n": 31
+    },
+    {
+     "group": "Dale · 2026-08",
+     "value": 73.7,
+     "n": 38
+    },
+    {
+     "group": "Priya · 2026-08",
+     "value": 71,
+     "n": 29
+    },
+    {
+     "group": "Marcus · 2026-09",
+     "value": 70,
+     "n": 41
+    },
+    {
+     "group": "Tomas · 2026-09",
+     "value": 65.6,
+     "n": 38
+    },
+    {
+     "group": "Jen · 2026-09",
+     "value": 53.9,
+     "n": 23
+    },
+    {
+     "group": "Dale · 2026-09",
+     "value": 53.2,
+     "n": 37
+    },
+    {
+     "group": "Tomas · 2026-08",
+     "value": 52.9,
+     "n": 28
+    },
+    {
+     "group": "Priya · 2026-09",
+     "value": 45.9,
+     "n": 30
+    },
+    {
+     "group": "Marcus · 2026-10",
+     "value": 43.4,
+     "n": 23
+    },
+    {
+     "group": "Priya · 2026-10",
+     "value": 41.9,
+     "n": 19
+    },
+    {
+     "group": "Jen · 2026-10",
+     "value": 29.9,
+     "n": 15
+    },
+    {
+     "group": "Dale · 2026-10",
+     "value": 27,
+     "n": 19
+    },
+    {
+     "group": "Tomas · 2026-10",
+     "value": 23.5,
+     "n": 14
+    }
+   ]
+  }
+ ],
+ "unlocked": true,
+ "shown": 420,
+ "total": 420
+}
