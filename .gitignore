@@ -1,0 +1,5 @@
+.access_secret
+node_modules/
+.vercel/
+.DS_Store
+outreach/
