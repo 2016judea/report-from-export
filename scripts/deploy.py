@@ -63,6 +63,16 @@ def setup(token):
     print("public", c)
 
 
+# Only public/ is static. Until 2026-10-19 every file sat at the deployment root with
+# outputDirectory ".", so the functions' own source (api/_tool.js with the prompt, api/_lib.js
+# with the paywall) was served as plain text at /api/_tool.js (curl, 200). Static files now go
+# up under public/; api/ and vercel.json stay at the root, where only the functions read them.
+def upload_name(rel):
+    if rel.parts[0] == "api" or str(rel) == "vercel.json":
+        return str(rel)
+    return "public/" + str(rel)
+
+
 def deploy(token):
     files, total = [], 0
     for path in sorted(SITE.rglob("*")):
@@ -75,12 +85,12 @@ def deploy(token):
                      headers={"Content-Type": "application/octet-stream", "x-vercel-digest": sha, "x-vercel-team-id": TEAM})
         if c >= 400:
             sys.exit(f"upload {rel} failed: {c} {out}")
-        files.append({"file": str(rel), "sha": sha, "size": len(body)})
+        files.append({"file": upload_name(rel), "sha": sha, "size": len(body)})
         total += len(body)
     print(f"  {len(files)} files, {total:,} bytes")
     c, out = req("POST", f"https://api.vercel.com/v13/deployments?teamId={TEAM}&skipAutoDetectionConfirmation=1", token,
                  {"name": PROJECT, "project": PROJECT, "target": "production", "files": files,
-                  "projectSettings": {"framework": None}})
+                  "projectSettings": {"framework": None, "outputDirectory": "public"}})
     if c >= 400 or out.get("error"):
         sys.exit(f"create failed: {c} {json.dumps(out.get('error'))}")
     url = out["url"]
