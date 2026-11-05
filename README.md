@@ -8,7 +8,7 @@ Paste the CSV your system already exports (work orders, POS sales, timecards, a 
 
 Job postings are a business writing down, in its own words, a step of work it will pay a
 salary for. A sweep of Twin Cities postings from the last 30 days (Craigslist jobs plus
-public Greenhouse, Lever and Ashby boards, 2026-10-17; `~/Desktop/hiring-signals`) found
+public Greenhouse, Lever and Ashby boards, 2026-10-17; `~/Desktop/workspace/hiring-signals`) found
 **25 distinct employers** posting a version of this one:
 
 > Prepare financial and management reports for the owner  
